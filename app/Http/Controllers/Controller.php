@@ -26,7 +26,7 @@ class Controller extends BaseController
             if($level == $value)
             {
                 $calculated = $time/$this->hour;
-                if($this->max_work_time > $calculated)
+                if($this->max_work_time < $calculated)
                     return $item." can finish this work in ".$calculated." Hour. This job takes over ".$this->max_work_time." hours.";
                 else
                     return $item." can finish this work in ".$calculated." Hour";
