@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\TaskService;
+use Response;
 
 class HomePageController extends Controller
 {
@@ -16,8 +17,13 @@ class HomePageController extends Controller
 
     public function index()
     {
-        $task = $this->taskService->getFullTask();
+        $my_format = $this->taskService->getFormatTask();
+        return Response::json($my_format, 200, array(), JSON_PRETTY_PRINT);
+        // gives the above output as rest.
 
-        return view('page.homepage')->with('task',$task);
+        //-----------------------------------
+        // The code below gives the output to the full stack page.
+
+        //return view('page.homepage')->with('task',$task);
     }
 }
