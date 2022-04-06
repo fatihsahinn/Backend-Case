@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\TaskService;
+use App\Http\Resources\TaskResource;
+use Illuminate\Support\Facades\Http;
 use Response;
 
 class HomePageController extends Controller
@@ -15,15 +17,23 @@ class HomePageController extends Controller
         $this->taskService = $taskService;
     }
 
-    public function index()
+    public function rest_output_index()
     {
-        $my_format = $this->taskService->getFormatTask();
-        return Response::json($my_format, 200, array(), JSON_PRETTY_PRINT);
-        // gives the above output as rest.
+        return Response::json($this->taskService->getFormatTask(), 200, array(), JSON_PRETTY_PRINT);
+    }
+    public function full_stack_output_index()
+    {
+        return view('page.homepage')->with('task',$this->taskService->getFormatTask());
+    }
 
-        //-----------------------------------
-        // The code below gives the output to the full stack page.
+    public function resource_output_index()
+    {
+        return new TaskResource($this->taskService->getFormatTask());
+    }
 
-        //return view('page.homepage')->with('task',$task);
+    public function http_index()
+    {
+        $response = Http::get('http://localhost/WEG-Backend-Case-Study/Backend-Case/public/api/gethttp')->json();
+        return $response;
     }
 }

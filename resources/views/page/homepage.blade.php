@@ -11,7 +11,6 @@
                 <th scope="col">#</th>
                 <th scope="col">Task Name</th>
                 <th scope="col">Task Level</th>
-                <th scope="col">Task Time</th>
                 <th scope="col">Task Type</th>
                 <th scope="col">Task End Time</th>
             </tr>
@@ -23,9 +22,8 @@
                         <th scope="row">{{ $data->id }}</th>
                         <td>{{ $data->task_name }}</td>
                         <td>{{ $data->task_level }}</td>
-                        <td>{{ $data->task_time }}</td>
                         <td>{{ $data->task_type }}</td>
-                        <td>{{ \App\Http\Controllers\Controller::task_get($data->task_level,$data->task_time) }}</td>
+                        <td>{{ $data->task_time }}</td>
                     </tr>
                 @endforeach
             @endif

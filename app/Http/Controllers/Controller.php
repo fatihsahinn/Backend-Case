@@ -39,4 +39,25 @@ class Controller extends BaseController
         $task = new Controller();
         return $task->TaskCalculate($level,$time);
     }
+
+    public static function format_1($a,$b,$c,$d)
+    {
+        $new_data = array([
+            'task_name' => $a,
+            'task_level' => $b,
+            'task_time' => $c,
+            'task_type' => $d
+        ]);
+        return $new_data;
+    }
+    public static function format_2($a,$b,$c,$d)
+    {
+        $new_data = array([
+            'task_name' => $a,
+            'task_level' => $b,
+            'task_time' => $c,
+            'task_type' => $d
+        ]);
+        return $new_data;
+    }
 }

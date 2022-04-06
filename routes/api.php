@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/gethttp','App\Http\Controllers\HomePageController@rest_output_index')->name('laravel.http.get');
